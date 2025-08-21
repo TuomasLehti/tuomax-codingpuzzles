@@ -112,5 +112,27 @@ public class RepetitionDetector<T>
         Integer repetitionLength = getRepetition().size();
         return (lastIndex - introLength + 1) / repetitionLength;
     }
+
+    public T get(Long index)
+    {
+        if (index < entries.size()) {
+            return entries.get((int) (index % Integer.MAX_VALUE));
+        }
+        Integer introLength = getIntro().size();
+        Integer repetitionLength = getRepetition().size();
+        Long outroLength = (index - introLength + 1) % repetitionLength;
+        if (outroLength.equals(0L)) {
+            outroLength = (long) repetitionLength;
+        }
+
+        return entries.get(
+            (int) (introLength + outroLength - 1) % Integer.MAX_VALUE
+        );
+
+    }
+
+// 1 2 3 4 5 6 4 5 6 4
+// 0 1 2 3 4 5 6 7 8 9    
+//           .     .
     
 }
