@@ -1,10 +1,10 @@
 package fi.tuomax.codingpuzzles.everybodycodes.stories.year2024.quest1;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
+
+import fi.tuomax.codingpuzzles.metadata.Metadata;
 
 public class EniCode_Solver_Part1 
 {
@@ -29,10 +29,10 @@ public class EniCode_Solver_Part1
         return Long.valueOf(eni(a, x, m)) + Long.valueOf(eni(b, y, m)) + Long.valueOf(eni(c, z, m));
     }
 
-    public Long solve() 
+    public Long solve(Metadata metadata) 
     throws IOException
     {
-        List<String> input = Files.readAllLines(new File("inputs\\everybodycodes\\stories\\year2024\\quest1\\ecs-2024-1-input.txt").toPath());
+        List<String> input = metadata.getInput("everybodyCodesStories", 2024, 1, 1);
         Long answer = Long.MIN_VALUE;
         for (String line : input) {
             String[] parts = line.split(" |=");
