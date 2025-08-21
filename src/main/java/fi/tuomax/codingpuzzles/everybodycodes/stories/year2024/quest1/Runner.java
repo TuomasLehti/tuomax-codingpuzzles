@@ -11,9 +11,11 @@ public class Runner
     {
         EniCode_Solver_Part1 solverPart1 = new EniCode_Solver_Part1();
         EniCode_Solver_Part2 solverPart2 = new EniCode_Solver_Part2();
+        EniCode_Solver_Part3 solverPart3 = new EniCode_Solver_Part3();
         try {
             System.out.println(solverPart1.solve(new Metadata()));
             System.out.println(solverPart2.solve(new Metadata()));
+            System.out.println(solverPart3.solve(new Metadata()));
         } catch (IOException e) {
             System.out.println(e);
         }
@@ -21,3 +23,6 @@ public class Runner
 
 
 }
+
+// 9050307829306
+// 7276515438396 
