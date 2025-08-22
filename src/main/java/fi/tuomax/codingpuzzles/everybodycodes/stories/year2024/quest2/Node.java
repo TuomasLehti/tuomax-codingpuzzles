@@ -51,6 +51,10 @@ public class Node
 
     private Node parent = null;
 
+    public Node getParent() {
+        return parent;
+    }
+
     public void setParent(Node parent) 
     {
         this.parent = parent;
@@ -126,6 +130,38 @@ public class Node
         String tmpSymbol = this.getSymbol();
         this.setSymbol(other.getSymbol());
         other.setSymbol(tmpSymbol);
+    }
+
+    public Node findParentOf(Integer id)
+    {
+        return find(id) != null ? find(id).parent : null;
+    }
+
+    public void swapWithChildren(Node node, Node other, Node otherParent)
+    {
+        if (left == node) {
+            if (otherParent.left == other) {
+                Node temp = left;
+                left = otherParent.left;
+                otherParent.left = temp;
+            } else {
+                Node temp = left;
+                left = otherParent.right;
+                otherParent.right = temp;
+            }
+        } else {
+            if (otherParent.left == other) {
+                Node temp = right;
+                right = otherParent.left;
+                otherParent.left = temp;
+            } else {
+                Node temp = right;
+                right = otherParent.right;
+                otherParent.right = temp;
+            }
+        }
+        node.setParent(otherParent);
+        other.setParent(this);
     }
 
     public List<List<Node>> getLevels(

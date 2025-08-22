@@ -12,9 +12,11 @@ public class Runner
         System.out.println();
         TangledTrees_Solver solverPart1 = new TangledTrees_Solver();
         TangledTrees_Solver_Part2 solverPart2 = new TangledTrees_Solver_Part2();
+        TangledTrees_Solver_Part3 solverPart3 = new TangledTrees_Solver_Part3();
         try {
             System.out.println("Part 1: " + solverPart1.solve(new Metadata().getInput("everybodyCodesStories", 2024, 2, 1)));
             System.out.println("Part 2: " + solverPart2.solve(new Metadata().getInput("everybodyCodesStories", 2024, 2, 2)));
+            System.out.println("Part 3: " + solverPart3.solve(new Metadata().getInput("everybodyCodesStories", 2024, 2, 3)));
         } catch (IOException e) {
             System.out.println(e);
         }
