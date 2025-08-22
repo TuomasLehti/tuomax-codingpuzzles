@@ -9,9 +9,9 @@ extends EniCode_Solver
     @Override
     protected Long getFinalEniAnswer(
         RepetitionDetector<Long> detector,
-        Integer n,
-        Integer exp,
-        Integer mod
+        Long n,
+        Long exp,
+        Long mod
     ) {
         StringBuilder sb = new StringBuilder();
         for (long idx = exp - 1; idx >= 0; idx--) {

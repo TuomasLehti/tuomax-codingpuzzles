@@ -18,8 +18,8 @@ public class Test_Enicode_Solver_Part1
     public void test_Eni()
     {
         EniCode_Solver_Part1 solver = new EniCode_Solver_Part1();
-        assertEquals(1342, solver.eni(2, 4, 5));
-        assertEquals(311193, solver.eni(3, 5, 16));
+        assertEquals(1342, solver.eni(2L, 4L, 5L));
+        assertEquals(311193, solver.eni(3L, 5L, 16L));
     }
 
     @Test

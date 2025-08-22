@@ -10,7 +10,7 @@ import fi.tuomax.codingpuzzles.common.RepetitionDetector;
 public abstract class EniCode_Solver 
 {
 
-    public Long eni(Integer n, Integer exp, Integer mod)
+    public Long eni(Long n, Long exp, Long mod)
     {
         RepetitionDetector<Long> detector = new RepetitionDetector<>();
         Long score = 1L;
@@ -23,9 +23,9 @@ public abstract class EniCode_Solver
 
     protected abstract Long getFinalEniAnswer(
         RepetitionDetector<Long> detector,
-        Integer n,
-        Integer exp,
-        Integer mod
+        Long n,
+        Long exp,
+        Long mod
     );
 
     public Long summedEni(EniParams params)
