@@ -31,9 +31,9 @@ public abstract class EniCode_Solver
     public Long summedEni(EniParams params)
     {
         return 
-            Long.valueOf(eni(params.a(), params.x(), params.m())) 
-            + Long.valueOf(eni(params.b(), params.y(), params.m())) 
-            + Long.valueOf(eni(params.c(), params.z(), params.m()));
+            eni(params.a(), params.x(), params.m())
+            + eni(params.b(), params.y(), params.m())
+            + eni(params.c(), params.z(), params.m());
     }
 
     public String solve(List<String> input)
@@ -46,7 +46,6 @@ public abstract class EniCode_Solver
             );
         }
         return answer.toString();
-        
     }
     
 }
