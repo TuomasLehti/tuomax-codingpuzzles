@@ -11,6 +11,11 @@ public class Node
 
     private Integer id;
 
+    public void setId(Integer id) 
+    {
+        this.id = id;
+    }
+
     public Integer getId() 
     {
         return id;
@@ -18,12 +23,22 @@ public class Node
 
     private Integer rank;
 
+    public void setRank(Integer rank) 
+    {
+        this.rank = rank;
+    }
+
     public Integer getRank() 
     {
         return rank;
     }
 
     private String symbol;
+
+    public void setSymbol(String symbol) 
+    {
+        this.symbol = symbol;
+    }
 
     public String getSymbol() 
     {
@@ -33,6 +48,13 @@ public class Node
     private Node left = null;
 
     private Node right = null;
+
+    private Node parent = null;
+
+    public void setParent(Node parent) 
+    {
+        this.parent = parent;
+    }
 
     public Node(Integer id, Integer rank, String symbol)
     {
@@ -62,17 +84,48 @@ public class Node
     {
         if (node.getRank() < this.getRank()) {
             if (left == null) {
+                node.setParent(this);
                 left = node;
             } else {
                 left.add(node);
             }
         } else {
             if (right == null) {
+                node.setParent(this);
                 right = node;
             } else {
                 right.add(node);
             }
         }
+    }
+
+    public Node find(Integer id)
+    {
+        if (getId().equals(id)) {
+            return this;
+        }
+        if (left != null && left.find(id) != null) {
+            return left.find(id);
+        }
+        if (right != null && right.find(id) != null) {
+            return right.find(id);
+        }
+        return null;
+    }
+
+    public void swap(Node other)
+    {
+        Integer tmpId = this.getId();
+        this.setId(other.getId());
+        other.setId(tmpId);
+
+        Integer tmpRank = this.getRank();
+        this.setRank(other.getRank());
+        other.setRank(tmpRank);
+
+        String tmpSymbol = this.getSymbol();
+        this.setSymbol(other.getSymbol());
+        other.setSymbol(tmpSymbol);
     }
 
     public List<List<Node>> getLevels(
