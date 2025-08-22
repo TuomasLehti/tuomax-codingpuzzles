@@ -29,13 +29,40 @@ public class Metadata
         }
     }
 
-    public List<String> getInput(String event, Integer year, Integer day, Integer part) throws JSONException, IOException
+    public List<String> getInput(String event, Integer year, Integer day, Integer part) 
+    throws JSONException, IOException
     {
         JSONObject eventObj = getEventObj(event);
         JSONObject yearObj = getYearObj(eventObj, year);
         JSONObject dayObj = getDayObj(yearObj, day);
         JSONObject partObj = getPartObj(dayObj, part);
         return Files.readAllLines(new File(partObj.getString("inputFilename")).toPath());
+    }
+
+    public TestCase getTestCase(String event, Integer year, Integer day, String testname)
+    throws JSONException, IOException
+    {
+        JSONObject eventObj = getEventObj(event);
+        JSONObject yearObj = getYearObj(eventObj, year);
+        JSONObject dayObj = getDayObj(yearObj, day);
+        JSONObject partObj = getTestCaseObj(dayObj, testname);
+        return new TestCase(
+            Files.readAllLines(new File(partObj.getString("inputFilename")).toPath()),
+            partObj.getString("expectedAnswer")
+        );
+    }
+
+    private JSONObject getTestCaseObj(JSONObject dayObj, String testname) 
+    {
+        JSONArray testArr = dayObj.getJSONArray("tests");
+        Integer numOfTests = testArr.length();
+        for (int testIdx = 0; testIdx < numOfTests; testIdx++) {
+            JSONObject testObj = testArr.getJSONObject(testIdx);
+            if (testname.equals(testObj.getString("name"))) {
+                return testObj;
+            }
+        }
+        throw new IllegalArgumentException(String.format("Test %s not found.", testname));
     }
 
     private JSONObject getPartObj(JSONObject dayObj, Integer part) 
