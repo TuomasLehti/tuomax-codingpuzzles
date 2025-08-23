@@ -25,7 +25,7 @@ public class Test_TangledTrees_Solver_Part1 {
             fail(e.getMessage());
         }
 
-        TangledTrees_Solver solver = new TangledTrees_Solver();
+        TangledTrees_Solver_Part1 solver = new TangledTrees_Solver_Part1();
         assertEquals(
             testcase.expectedAnswer(),
             solver.solve(testcase.input())
@@ -44,7 +44,7 @@ public class Test_TangledTrees_Solver_Part1 {
             fail(e.getMessage());
         }
 
-        TangledTrees_Solver solver = new TangledTrees_Solver();
+        TangledTrees_Solver_Part1 solver = new TangledTrees_Solver_Part1();
         assertEquals(
             testcase.expectedAnswer(),
             solver.solve(testcase.input())

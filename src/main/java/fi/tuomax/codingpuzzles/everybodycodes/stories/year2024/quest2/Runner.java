@@ -10,7 +10,7 @@ public class Runner
     public static void main(String[] args)
     {
         System.out.println();
-        TangledTrees_Solver solverPart1 = new TangledTrees_Solver();
+        TangledTrees_Solver_Part1 solverPart1 = new TangledTrees_Solver_Part1();
         TangledTrees_Solver_Part2 solverPart2 = new TangledTrees_Solver_Part2();
         TangledTrees_Solver_Part3 solverPart3 = new TangledTrees_Solver_Part3();
         try {

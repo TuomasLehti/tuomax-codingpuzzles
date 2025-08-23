@@ -8,7 +8,7 @@ import org.json.JSONException;
 
 import fi.tuomax.codingpuzzles.metadata.Metadata;
 
-public class TangledTrees_Solver 
+public class TangledTrees_Solver_Part1 
 {
 
     private Node leftTree = null;
@@ -18,21 +18,34 @@ public class TangledTrees_Solver
     public String solve(List<String> ecsInput)
     {
         for (String line : ecsInput) {
-            Node[] nodes = Node.fromEcsInput(line);
-            if (leftTree == null) {
-                leftTree = nodes[0];
+            if (line.startsWith("ADD")) {
+                handleAdd(line);
             } else {
-                leftTree.add(nodes[0]);
-            }
-            if (rightTree == null) {
-                rightTree = nodes[1];
-            } else {
-                rightTree.add(nodes[1]);
+                handleSwap(line);
             }
         }
         return getLongestMessage(leftTree) + getLongestMessage(rightTree);
     }
 
+    private void handleAdd(String line) 
+    {
+        Node[] nodes = Node.fromEcsInput(line);
+        if (leftTree == null) {
+            leftTree = nodes[0];
+        } else {
+            leftTree.add(nodes[0]);
+        }
+        if (rightTree == null) {
+            rightTree = nodes[1];
+        } else {
+            rightTree.add(nodes[1]);
+        }
+    }
+
+    protected void handleSwap(String line)
+    {
+        // does nothing in part 1
+    }
 
     private String getLongestMessage(Node tree)
     {
@@ -60,7 +73,7 @@ public class TangledTrees_Solver
 
     public static void main(String[] args)
     {
-        TangledTrees_Solver solver = new TangledTrees_Solver();
+        TangledTrees_Solver_Part1 solver = new TangledTrees_Solver_Part1();
         try {
             solver.solve(new Metadata().getInput("everybodyCodesStories", 2024, 2, 1));
         } catch (JSONException | IOException e) {
