@@ -2,7 +2,9 @@ package fi.tuomax.codingpuzzles.everybodycodes.stories.year2024.quest2;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.json.JSONException;
 
@@ -11,9 +13,11 @@ import fi.tuomax.codingpuzzles.metadata.Metadata;
 public class TangledTrees_Solver_Part1 
 {
 
-    protected Node leftTree = null;
+    protected Node leftTree = new Node(-1, -1, "");
 
-    protected Node rightTree = null;
+    protected Node rightTree = new Node(-1, -1, "");
+
+    protected Map<Integer, Node[]> pairs = new HashMap<>();
 
     public String solve(List<String> ecsInput)
     {
@@ -40,6 +44,7 @@ public class TangledTrees_Solver_Part1
         } else {
             rightTree.add(nodes[1]);
         }
+        pairs.put(nodes[0].getId(), nodes);
     }
 
     protected void handleSwap(String line)

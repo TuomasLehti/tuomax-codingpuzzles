@@ -12,6 +12,5 @@ extends TangledTrees_Solver_Part1
         Node rightNode = rightTree.find(Integer.valueOf(parts[1]));
         leftNode.swap(rightNode);
     }
-
     
 }
