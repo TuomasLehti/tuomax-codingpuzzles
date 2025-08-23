@@ -11,9 +11,9 @@ import fi.tuomax.codingpuzzles.metadata.Metadata;
 public class TangledTrees_Solver_Part1 
 {
 
-    private Node leftTree = null;
+    protected Node leftTree = null;
 
-    private Node rightTree = null;
+    protected Node rightTree = null;
 
     public String solve(List<String> ecsInput)
     {
