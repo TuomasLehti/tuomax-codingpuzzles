@@ -8,9 +8,11 @@ import java.util.Map;
 
 import org.json.JSONException;
 
+import fi.tuomax.codingpuzzles.framework.Solver;
 import fi.tuomax.codingpuzzles.metadata.Metadata;
 
 public class TangledTrees_Solver_Part1 
+extends Solver
 {
 
     protected Node leftTree = new Node(-1, -1, "");
@@ -19,7 +21,7 @@ public class TangledTrees_Solver_Part1
 
     protected Map<Integer, Node[]> pairs = new HashMap<>();
 
-    public String solve(List<String> ecsInput)
+    public void solve(List<String> ecsInput)
     {
         for (String line : ecsInput) {
             if (line.startsWith("ADD")) {
@@ -28,7 +30,7 @@ public class TangledTrees_Solver_Part1
                 handleSwap(line);
             }
         }
-        return getLongestMessage(leftTree) + getLongestMessage(rightTree);
+        setAnswer(getLongestMessage(leftTree) + getLongestMessage(rightTree));
     }
 
     private void handleAdd(String line) 

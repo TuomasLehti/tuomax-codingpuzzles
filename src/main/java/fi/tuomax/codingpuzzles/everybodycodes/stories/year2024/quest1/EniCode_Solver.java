@@ -3,11 +3,13 @@ package fi.tuomax.codingpuzzles.everybodycodes.stories.year2024.quest1;
 import java.util.List;
 
 import fi.tuomax.codingpuzzles.common.RepetitionDetector;
+import fi.tuomax.codingpuzzles.framework.Solver;
 
 /**
  * A base class for solvers, which takes care of the common stuff.
  */
 public abstract class EniCode_Solver 
+extends Solver
 {
 
     public Long eni(Long n, Long exp, Long mod)
@@ -36,7 +38,7 @@ public abstract class EniCode_Solver
             + eni(params.c(), params.z(), params.m());
     }
 
-    public String solve(List<String> input)
+    public void solve(List<String> input)
     {
         Long answer = Long.MIN_VALUE;
         for (String line : input) {
@@ -45,7 +47,7 @@ public abstract class EniCode_Solver
                 summedEni(EniParams.fromEcInput(line))
             );
         }
-        return answer.toString();
+        setAnswer(answer.toString());
     }
     
 }
