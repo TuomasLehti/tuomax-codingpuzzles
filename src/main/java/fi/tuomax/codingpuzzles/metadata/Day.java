@@ -35,6 +35,11 @@ public class Day
         parts.add(part);
     }
 
+    public List<Part> getParts()
+    {
+        return parts;
+    }
+
     public static Day fromJson(JSONObject jsonDay) 
     {
         Day day = new Day();

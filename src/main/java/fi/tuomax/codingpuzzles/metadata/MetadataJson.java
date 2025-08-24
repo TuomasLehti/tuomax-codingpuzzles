@@ -1,6 +1,9 @@
 package fi.tuomax.codingpuzzles.metadata;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.json.JSONArray;
@@ -19,6 +22,13 @@ public class MetadataJson
     public void addSite(Site event)
     {
         sites.put(event.getId(), event);
+    }
+
+    public List<String> getSiteIds()
+    {
+        List<String> siteIds = new ArrayList<>(sites.keySet());
+        Collections.sort(siteIds);
+        return siteIds;
     }
 
     public static MetadataJson fromJson(JSONObject json)

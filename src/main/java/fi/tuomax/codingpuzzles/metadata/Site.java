@@ -1,6 +1,9 @@
 package fi.tuomax.codingpuzzles.metadata;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.json.JSONArray;
@@ -14,7 +17,7 @@ import org.json.JSONObject;
 public class Site 
 {
 
-    public static final String ID_ECS = "EverybodyCodesStories";
+    public static final String ID_ECS = "everybodyCodesStories";
 
     private String id;
 
@@ -35,6 +38,18 @@ public class Site
     public void addEvent(Event event)
     {
         events.put(event.getId(), event);
+    }
+
+    public Event getEvent(Integer id)
+    {
+        return events.get(id);
+    }
+
+    public List<Integer> getEventIds()
+    {
+        List<Integer> eventIds = new ArrayList<>(events.keySet());
+        Collections.sort(eventIds);
+        return eventIds;
     }
 
     public static Site fromJson(JSONObject jsonSite) 

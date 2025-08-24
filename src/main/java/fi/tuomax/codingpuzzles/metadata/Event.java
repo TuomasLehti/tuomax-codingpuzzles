@@ -1,10 +1,7 @@
 package fi.tuomax.codingpuzzles.metadata;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -42,6 +39,11 @@ public class Event
         days.add(day);
     }
 
+    public List<Day> getDays() 
+    {
+        return days;
+    }
+
     public static Event fromJson(JSONObject jsonEvent) 
     {
         Event event = new Event();
@@ -54,7 +56,6 @@ public class Event
         for (int i = 0; i < numOfDays; i++) {
             event.addDay(Day.fromJson(jsonDays.getJSONObject(i)));
         }
-
 
         return event;
     }
