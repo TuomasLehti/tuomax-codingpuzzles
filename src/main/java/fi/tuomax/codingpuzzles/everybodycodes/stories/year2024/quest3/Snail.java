@@ -29,5 +29,15 @@ public class Snail
         Integer yPos = discLength - xPos + 1;
         return yPos.equals(1);
     }
+
+    public Integer firstAlignment()
+    {
+        return y;
+    }
+
+    public Integer discLength()
+    {
+        return x + y + 1;
+    }
     
 }
