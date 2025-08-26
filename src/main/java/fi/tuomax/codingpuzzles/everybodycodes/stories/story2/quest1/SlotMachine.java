@@ -39,7 +39,6 @@ public class SlotMachine
 
         while (coinPos.y() < height) {
             coinPos = new Coords2d(coinPos.x(), coinPos.y() + 1);
-            System.out.println(coinPos);
             if (nails.contains(coinPos)) {
                 if (behaviours.charAt(behaviourIdx) == 'L') {
                     if (coinPos.x() > 0) {

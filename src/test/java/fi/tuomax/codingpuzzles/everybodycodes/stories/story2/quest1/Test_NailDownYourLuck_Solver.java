@@ -17,5 +17,14 @@ extends Test_Solver
             NailDownYourLuck_Solver_Part1.class
         );
     }
+
+    @Test
+    public void test_Part2()
+    {
+        runTest(
+            Site.ID_ECS, 2, 0, 1, "part2", 
+            NailDownYourLuck_Solver_Part2.class
+        );
+    }
     
 }
