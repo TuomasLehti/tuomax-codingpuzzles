@@ -1,54 +1,24 @@
 package fi.tuomax.codingpuzzles.everybodycodes.stories.year2024.quest2;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
-
-import java.io.IOException;
-
-import org.json.JSONException;
 import org.junit.jupiter.api.Test;
 
-import fi.tuomax.codingpuzzles.metadata.Metadata;
-import fi.tuomax.codingpuzzles.metadata.TestCase;
+import fi.tuomax.codingpuzzles.Test_Solver;
+import fi.tuomax.codingpuzzles.metadata.Site;
 
-public class Test_TangledTrees_Solver_Part1 {
+public class Test_TangledTrees_Solver_Part1 
+extends Test_Solver
+{
 
     @Test
     public void test_Solve_Simple()
     {
-        Metadata metadata = new Metadata();
-        TestCase testcase = null;
-        try {
-            testcase =
-                metadata.getTestCase("everybodyCodesStories", 2024, 2, "part1Simple");
-        } catch (JSONException | IOException e) {
-            fail(e.getMessage());
-        }
-
-        TangledTrees_Solver_Part1 solver = new TangledTrees_Solver_Part1();
-        assertEquals(
-            testcase.expectedAnswer(),
-            solver.solve(testcase.input())
-        );
+        runTest(Site.ID_ECS, 1, 1, 0, "part1Simple", TangledTrees_Solver_Part1.class);
     }
 
     @Test
     public void test_Solve_Complex()
     {
-        Metadata metadata = new Metadata();
-        TestCase testcase = null;
-        try {
-            testcase =
-                metadata.getTestCase("everybodyCodesStories", 2024, 2, "part1Complex");
-        } catch (JSONException | IOException e) {
-            fail(e.getMessage());
-        }
-
-        TangledTrees_Solver_Part1 solver = new TangledTrees_Solver_Part1();
-        assertEquals(
-            testcase.expectedAnswer(),
-            solver.solve(testcase.input())
-        );
+        runTest(Site.ID_ECS, 1, 1, 0, "part1Complex", TangledTrees_Solver_Part1.class);
     }
     
 }
