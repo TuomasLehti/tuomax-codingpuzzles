@@ -12,7 +12,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import fi.tuomax.codingpuzzles.framework.Solver;
-import fi.tuomax.codingpuzzles.metadata.MetadataJson;
+import fi.tuomax.codingpuzzles.metadata.Metadata;
 import fi.tuomax.codingpuzzles.metadata.TestCase;
 
 /**
@@ -29,10 +29,10 @@ public class Test_Solver
         String testName,
         Class<?> solverClass
     ) {
-        MetadataJson metadata = null;
+        Metadata metadata = null;
         try {
-            metadata = MetadataJson.fromJson(
-                new JSONObject(Files.readString(new File("new_metadata.json").toPath()))
+            metadata = Metadata.fromJson(
+                new JSONObject(Files.readString(new File("metadata.json").toPath()))
             );
         } catch (JSONException | IOException e) {
             fail(e.getMessage());

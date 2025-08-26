@@ -12,7 +12,7 @@ import org.json.JSONObject;
 import fi.tuomax.codingpuzzles.framework.Solver;
 import fi.tuomax.codingpuzzles.metadata.Day;
 import fi.tuomax.codingpuzzles.metadata.Event;
-import fi.tuomax.codingpuzzles.metadata.MetadataJson;
+import fi.tuomax.codingpuzzles.metadata.Metadata;
 import fi.tuomax.codingpuzzles.metadata.Part;
 import fi.tuomax.codingpuzzles.metadata.Site;
 
@@ -21,7 +21,7 @@ public class Runner
 
     public void run()
     {
-        MetadataJson metadata = readMetadata();
+        Metadata metadata = readMetadata();
         runSite(metadata.getSite(Site.ID_ECS));
     }
 
@@ -66,11 +66,11 @@ public class Runner
         System.out.println(solver.getAnswer().equals(part.getExpectedAnswer()) ? " (right)" : " (wrong)");
     }
 
-    public MetadataJson readMetadata()
+    public Metadata readMetadata()
     {
         try {
-            return MetadataJson.fromJson(
-                new JSONObject(Files.readString(new File("new_metadata.json").toPath()))
+            return Metadata.fromJson(
+                new JSONObject(Files.readString(new File("metadata.json").toPath()))
             );
         } catch (JSONException | IOException e) {
             System.out.println("Unable to read metadata.");

@@ -1,15 +1,11 @@
 package fi.tuomax.codingpuzzles.everybodycodes.stories.year2024.quest2;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.json.JSONException;
-
 import fi.tuomax.codingpuzzles.framework.Solver;
-import fi.tuomax.codingpuzzles.metadata.Metadata;
 
 public class TangledTrees_Solver_Part1 
 extends Solver
@@ -75,17 +71,6 @@ extends Solver
         }
 
         return sb.toString();
-    }
-        
-
-    public static void main(String[] args)
-    {
-        TangledTrees_Solver_Part1 solver = new TangledTrees_Solver_Part1();
-        try {
-            solver.solve(new Metadata().getInput("everybodyCodesStories", 2024, 2, 1));
-        } catch (JSONException | IOException e) {
-            e.printStackTrace();
-        }
     }
     
 }
