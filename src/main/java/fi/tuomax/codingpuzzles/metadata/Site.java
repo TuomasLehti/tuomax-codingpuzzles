@@ -18,6 +18,7 @@ public class Site
 {
 
     public static final String ID_ECS = "everybodyCodesStories";
+    public static final String ID_EC = "everybodyCodes";
 
     private String id;
 
