@@ -1,7 +1,9 @@
 package fi.tuomax.codingpuzzles.everybodycodes.stories.story2.quest1;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class SlotMachine 
@@ -30,43 +32,51 @@ public class SlotMachine
             col = 0L;
         }
         height = row;
+        numOfSlots = (width + 1) / 2;
     }
+
+    private Long numOfSlots;
+
+    public Long numOfSlots()
+    {
+        return numOfSlots;
+    }
+    
+    private Map<SlotGame, Long> scores = new HashMap<>();
 
     public Long dropCoin(String behaviours, Long startSlot)
     {
-        Coords2d coinPos = new Coords2d((startSlot - 1) * 2, -1L);
-        Integer behaviourIdx = 0;
+        SlotGame game = new SlotGame(startSlot, behaviours);
+        if (!scores.containsKey(game)) {
+            Coords2d coinPos = new Coords2d((startSlot - 1) * 2, -1L);
+            Integer behaviourIdx = 0;
 
-        while (coinPos.y() < height) {
-            coinPos = new Coords2d(coinPos.x(), coinPos.y() + 1);
-            if (nails.contains(coinPos)) {
-                if (behaviours.charAt(behaviourIdx) == 'L') {
-                    if (coinPos.x() > 0) {
-                        coinPos = new Coords2d(coinPos.x() - 1, coinPos.y());
+            while (coinPos.y() < height) {
+                coinPos = new Coords2d(coinPos.x(), coinPos.y() + 1);
+                if (nails.contains(coinPos)) {
+                    if (behaviours.charAt(behaviourIdx) == 'L') {
+                        if (coinPos.x() > 0) {
+                            coinPos = new Coords2d(coinPos.x() - 1, coinPos.y());
+                        } else {
+                            coinPos = new Coords2d(coinPos.x() + 1, coinPos.y());
+                        }
                     } else {
-                        coinPos = new Coords2d(coinPos.x() + 1, coinPos.y());
+                        if (coinPos.x() < (width - 1)) {
+                            coinPos = new Coords2d(coinPos.x() + 1, coinPos.y());
+                        } else {
+                            coinPos = new Coords2d(coinPos.x() - 1, coinPos.y());
+                        }
                     }
-                } else {
-                    if (coinPos.x() < (width - 1)) {
-                        coinPos = new Coords2d(coinPos.x() + 1, coinPos.y());
-                    } else {
-                        coinPos = new Coords2d(coinPos.x() - 1, coinPos.y());
-                    }
+                    behaviourIdx++;
                 }
-                behaviourIdx++;
             }
+
+            Long endSlot = coinPos.x() / 2 + 1;
+            Long score = endSlot * 2 - startSlot;
+            scores.put(game, Math.max(0, score));
         }
+        return scores.get(game);
 
-        Long endSlot = coinPos.x() / 2 + 1;
-        return endSlot * 2 - startSlot;
-
-        /*
-         * 0 1
-         * 2 2
-         * 4 3
-         * 6 4
-         * 8 5
-         */
     }
-    
+        
 }
