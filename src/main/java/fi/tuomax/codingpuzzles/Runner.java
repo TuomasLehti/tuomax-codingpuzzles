@@ -58,6 +58,7 @@ public class Runner
         try {
             Class<?> solverClass = getClass().getClassLoader().loadClass(part.getSolverClassName());
             solver = (Solver) solverClass.getDeclaredConstructor().newInstance();
+            solver.setJsonMetadata(part.getJsonPart());
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | SecurityException | NoSuchMethodException e) {
             System.out.println("Unable to create a solver.");
             System.out.println(e.getMessage());
