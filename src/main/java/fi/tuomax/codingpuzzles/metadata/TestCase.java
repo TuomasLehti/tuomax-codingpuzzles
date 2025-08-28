@@ -12,7 +12,8 @@ import org.json.JSONObject;
 public record TestCase(
     String name,
     List<String> input,
-    String expectedAnswer
+    String expectedAnswer,
+    JSONObject jsonTest
 ) {
 
     public static TestCase fromJson(JSONObject jsonTest)
@@ -26,7 +27,8 @@ public record TestCase(
         return new TestCase(
             jsonTest.getString("name"),
             input,
-            jsonTest.getString("expectedAnswer")
+            jsonTest.getString("expectedAnswer"),
+            jsonTest
         );
     }
 

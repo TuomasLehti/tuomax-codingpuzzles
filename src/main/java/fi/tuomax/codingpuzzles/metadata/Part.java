@@ -32,6 +32,14 @@ public class Part {
         return solverClassName;
     }
 
+    private JSONObject jsonPart;
+
+    public JSONObject getJsonPart() 
+    {
+        return jsonPart;
+    }
+
+
     public static Part fromJsonArray(JSONObject jsonObject) 
     {
         Part part = new Part();
@@ -39,6 +47,7 @@ public class Part {
         part.inputFilename = jsonObject.getString("inputFilename");
         part.expectedAnswer = jsonObject.getString("expectedAnswer");
         part.solverClassName = jsonObject.optString("solverClassName", "");
+        part.jsonPart = jsonObject;
         return part;
     }
 

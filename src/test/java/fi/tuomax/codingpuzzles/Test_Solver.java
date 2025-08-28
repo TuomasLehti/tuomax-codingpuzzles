@@ -47,7 +47,7 @@ public class Test_Solver
                 | NoSuchMethodException | SecurityException e) {
             fail(e.getMessage());
         }
-        
+        solver.setJsonMetadata(testcase.jsonTest());
         solver.solve(testcase.input());
         assertEquals(
             testcase.expectedAnswer(),
