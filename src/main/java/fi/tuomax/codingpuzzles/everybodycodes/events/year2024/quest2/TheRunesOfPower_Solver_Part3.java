@@ -8,6 +8,8 @@ import java.util.Set;
 
 import fi.tuomax.codingpuzzles.framework.Solver;
 
+/** TODO: clean it up and comment it */
+
 public class TheRunesOfPower_Solver_Part3 
 extends Solver
 {
@@ -64,7 +66,7 @@ extends Solver
             }
             lineNo++;
         }
-
+/*
         for (int lineIdx = 0; lineIdx < input.size(); lineIdx++) {
             for (int idx = 0; idx < input.get(lineIdx).length(); idx++) {
                 if (scales.get(lineIdx).contains(idx)) {
@@ -75,7 +77,7 @@ extends Solver
             }
             System.out.println();
         }
-        
+*/        
         Integer answer = 0;
         for (Set<Integer> runeIdxs : scales) {
             answer += runeIdxs.size();
