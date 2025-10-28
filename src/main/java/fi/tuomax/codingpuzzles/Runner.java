@@ -22,8 +22,8 @@ public class Runner
     public void run()
     {
         Metadata metadata = readMetadata();
-//        runPart(metadata.getSite(Site.ID_ECS).getEvent(2).getDay(0).getPart(2));
-        runDay(metadata.getSite(Site.ID_EC).getEvent(2024).getDay(5));
+        runPart(metadata.getSite(Site.ID_EC).getEvent(2024).getDay(6).getPart(0));
+//        runDay(metadata.getSite(Site.ID_EC).getEvent(2024).getDay(5));
 //        runEvent(metadata.getSite(Site.ID_EC).getEvent(2024));
 //        runSite(metadata.getSite(Site.ID_ECS));
     }
