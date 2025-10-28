@@ -30,5 +30,12 @@ public class Test_Plan
         assertEquals(4280, planD.loop("S+===++-=+=-", 10));
 
     }
+
+    @Test
+    public void test_planner()
+    {
+        Planner planner = new Planner();
+        planner.combinations(5, 3, 3, new StringBuilder());
+    }
     
 }

@@ -3,7 +3,9 @@ package fi.tuomax.codingpuzzles.everybodycodes.events.year2024.quest7;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import fi.tuomax.codingpuzzles.framework.Solver;
 
@@ -44,15 +46,38 @@ extends Solver
 
     public String parseTrack(String[] trackInput)
     {
-        StringBuilder trk = new StringBuilder(trackInput[0]);
-        for (int row = 1; row < trackInput.length - 1; row++) {
-            trk.append(trackInput[row].charAt(trackInput[row].length() - 1));
+        Map<Vector, Character> segments = new HashMap<>();
+        long rNum = 0;
+        long cNum = 0;
+        for (String row : trackInput) {
+            for (Character col : row.toCharArray()) {
+                if (col != ' ') {
+                    segments.put(new Vector(cNum, rNum), col);
+                }
+                cNum++;
+            }
+            cNum = 0;
+            rNum++;
         }
-        trk.append(new StringBuilder(trackInput[trackInput.length - 1]).reverse());
-        for (int row = trackInput.length - 2; row >= 1; row--) {
-            trk.append(trackInput[row].charAt(0));
+
+        StringBuilder track = new StringBuilder("S");
+        segments.remove(new Vector(0, 0));
+        Vector pos = new Vector(1, 0);
+        while (segments.size() > 0) {
+            track.append(segments.get(pos));
+            segments.remove(pos);
+            if (segments.containsKey(new Vector(pos.x() + 1, pos.y()))) {
+                pos = new Vector(pos.x() + 1, pos.y());
+            } else if (segments.containsKey(new Vector(pos.x() - 1, pos.y()))) {
+                pos = new Vector(pos.x() - 1, pos.y());
+            } else if (segments.containsKey(new Vector(pos.x(), pos.y() + 1))) {
+                pos = new Vector(pos.x(), pos.y() + 1);
+            } else if (segments.containsKey(new Vector(pos.x(), pos.y() - 1))) {
+                pos = new Vector(pos.x(), pos.y() - 1);
+            } 
         }
-        return trk.toString();
+
+        return track.toString();
     }
 
     private String[] trackInput = new String[]{

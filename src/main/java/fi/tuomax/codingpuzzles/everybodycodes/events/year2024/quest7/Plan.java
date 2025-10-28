@@ -59,5 +59,10 @@ public class Plan
         }
         return essence;
     }
+
+    private Integer shortcut(String track, Integer numOfLoops)
+    {
+        return 0;
+    }
         
 }
