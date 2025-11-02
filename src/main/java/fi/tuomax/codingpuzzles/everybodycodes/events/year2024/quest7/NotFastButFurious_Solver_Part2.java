@@ -44,6 +44,8 @@ extends Solver
         return plans;
     }
 
+    /* TODO: extract common functionality with part 3 */
+
     public String parseTrack(String[] trackInput)
     {
         Map<Vector, Character> segments = new HashMap<>();
