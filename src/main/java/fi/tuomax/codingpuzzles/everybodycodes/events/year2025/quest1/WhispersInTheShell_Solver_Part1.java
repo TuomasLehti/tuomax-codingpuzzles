@@ -16,7 +16,7 @@ extends Solver
         int idx = 0;
         for (String instruction : instructions) {
             char dir = instruction.charAt(0);
-            int amount = Integer.valueOf(instruction.charAt(1));
+            int amount = Integer.valueOf(instruction.substring(1));
             if (dir == 'L')
                 idx -= amount;
             if (dir == 'R')
