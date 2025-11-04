@@ -10,6 +10,12 @@ extends Test_Solver
 {
 
     @Test
+    public void test_Part1() 
+    {
+        runTest(Site.ID_EC, 2025, 0, 0, "part1", WhispersInTheShell_Solver_Part1.class);
+    }
+
+    @Test
     public void test_Part2() 
     {
         runTest(Site.ID_EC, 2025, 0, 1, "part2", WhispersInTheShell_Solver_Part2.class);
