@@ -15,4 +15,10 @@ extends Test_Solver
         runTest(Site.ID_EC, 2025, 0, 1, "part2", WhispersInTheShell_Solver_Part2.class);
     }
 
+    @Test
+    public void test_Part3() 
+    {
+        runTest(Site.ID_EC, 2025, 0, 2, "part3", WhispersInTheShell_Solver_Part3.class);
+    }
+
 }
