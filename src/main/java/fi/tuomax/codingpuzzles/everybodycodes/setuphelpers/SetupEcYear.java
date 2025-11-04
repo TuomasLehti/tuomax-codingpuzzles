@@ -57,6 +57,7 @@ public class SetupEcYear
         createSolver(2);
         createSolver(3);
         createTestDir();
+        printMetadata();
 
         scanner.close();
     }
@@ -133,6 +134,7 @@ public class SetupEcYear
             "package " + clazzPath + ";",
             "",
             "import fi.tuomax.codingpuzzles.framework.Solver;",
+            "import java.util.List;",
             "",
             "public class " + namePascalCase + "_Solver_Part" + part,
             "extends Solver",
@@ -156,6 +158,51 @@ public class SetupEcYear
         } catch (IOException e) {
             System.out.println("Unable to write to " + solverSrc.toString() + ".");
         } 
+    }
+
+    private static void printMetadata()
+    {
+        System.out.println("                        {");
+        System.out.println("                            \"day\" : " + day + ",");
+        System.out.println("                            \"name\" : \"" + name + "\",");
+        System.out.println("                            \"parts\" : [");
+        System.out.println("                                {");
+        System.out.println("                                    \"part\" : 1,");
+        System.out.println("                                    \"solverClassName\" : \"fi.tuomax.codingpuzzles.everybodycodes.events.year" + year + ".quest" + day + "." + String.format("%s_Solver_Part1.java", namePascalCase) + "\",");
+        System.out.println("                                    \"inputFilename\" : \"inputs/everybodycodes/events/year" + year + "/quest" + day + "/part1_input.txt\",");
+        System.out.println("                                    \"expectedAnswer\" : \"\"");
+        System.out.println("                                },");
+        System.out.println("                                {");
+        System.out.println("                                    \"part\" : 2,");
+        System.out.println("                                    \"solverClassName\" : \"fi.tuomax.codingpuzzles.everybodycodes.events.year" + year + ".quest" + day + "." + String.format("%s_Solver_Part2.java", namePascalCase) + "\",");
+        System.out.println("                                    \"inputFilename\" : \"inputs/everybodycodes/events/year" + year + "/quest" + day + "/part2_input.txt\",");
+        System.out.println("                                    \"expectedAnswer\" : \"\"");
+        System.out.println("                                },");
+        System.out.println("                                {");
+        System.out.println("                                    \"part\" : 3,");
+        System.out.println("                                    \"solverClassName\" : \"fi.tuomax.codingpuzzles.everybodycodes.events.year" + year + ".quest" + day + "." + String.format("%s_Solver_Part3.java", namePascalCase) + "\",");
+        System.out.println("                                    \"inputFilename\" : \"inputs/everybodycodes/events/year" + year + "/quest" + day + "/part3_input.txt\",");
+        System.out.println("                                    \"expectedAnswer\" : \"\"");
+        System.out.println("                                }");
+        System.out.println("                            ],");
+        System.out.println("                            \"tests\" : [");
+        System.out.println("                                {");
+        System.out.println("                                    \"name\" : \"part1\",");
+        System.out.println("                                    \"inputFilename\" : \"inputs/everybodycodes/events/year" + year + "/quest" + day + "/part1_test.txt\",");
+        System.out.println("                                    \"expectedAnswer\" : \"\"");
+        System.out.println("                                },");
+        System.out.println("                                {");
+        System.out.println("                                    \"name\" : \"part2\",");
+        System.out.println("                                    \"inputFilename\" : \"inputs/everybodycodes/events/year" + year + "/quest" + day + "/part2_test.txt\",");
+        System.out.println("                                    \"expectedAnswer\" : \"\"");
+        System.out.println("                                },");
+        System.out.println("                                {");
+        System.out.println("                                    \"name\" : \"part3\",");
+        System.out.println("                                    \"inputFilename\" : \"inputs/everybodycodes/events/year" + year + "/quest" + day + "/part2_test.txt\",");
+        System.out.println("                                    \"expectedAnswer\" : \"\"");
+        System.out.println("                                }");
+        System.out.println("                            ]");
+        System.out.println("                        }");
     }
 
     private static void createTestDir() 
