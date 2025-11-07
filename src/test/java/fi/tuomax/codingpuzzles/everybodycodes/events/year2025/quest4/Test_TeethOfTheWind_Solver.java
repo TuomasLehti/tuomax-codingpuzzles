@@ -38,6 +38,14 @@ extends Test_Solver
             2025, 
             3, 
             1, 
+            "part2_whole", 
+            TeethOfTheWind_Solver_Part2.class
+        );
+        runTest(
+            Site.ID_EC, 
+            2025, 
+            3, 
+            1, 
             "part2_fraction", 
             TeethOfTheWind_Solver_Part2.class
         );

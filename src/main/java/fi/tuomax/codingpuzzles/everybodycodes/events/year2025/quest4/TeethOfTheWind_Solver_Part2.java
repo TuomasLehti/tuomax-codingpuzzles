@@ -17,13 +17,11 @@ extends Solver
             gears.add(Integer.valueOf(line));
         }
 
-        Double turns = 1.0;
-        for (int i = 0; i < gears.size() - 1; i++) {
-            turns *= ((float) gears.get(i) / (float) gears.get(i+1));
-        }
-
-        setAnswer(Long.toString(Math.round(10_000_000_000_000.0 / ((double) gears.get(0) / (double) gears.get(gears.size()-1))) + 1));
-
+        Double totalRatio = 
+            (double) gears.get(0) 
+            / (double) gears.get(gears.size() - 1);
+        Double inputRotations = 10_000_000_000_000.0 / totalRatio;
+        setAnswer(Long.toString(Math.round(Math.ceil(inputRotations))));
     }
     
 }
