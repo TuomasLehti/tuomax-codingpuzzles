@@ -22,7 +22,7 @@ extends Solver
             turns *= ((float) gears.get(i) / (float) gears.get(i+1));
         }
 
-        setAnswer(Long.toString(Math.round(10_000_000_000_000.0 / ((double) gears.get(0) / (double) gears.get(gears.size()-1)))));
+        setAnswer(Long.toString(Math.round(10_000_000_000_000.0 / ((double) gears.get(0) / (double) gears.get(gears.size()-1))) + 1));
 
     }
     

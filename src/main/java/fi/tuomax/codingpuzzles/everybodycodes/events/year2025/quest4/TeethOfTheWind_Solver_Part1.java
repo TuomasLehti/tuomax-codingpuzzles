@@ -21,7 +21,7 @@ extends Solver
         for (int i = 0; i < gears.size() - 1; i++) {
             turns *= ((float) gears.get(i) / (float) gears.get(i+1));
         }
-        setAnswer(Double.toString(2025 * turns));
+        setAnswer(Long.toString(Math.round(Math.floor(2025 * turns))));
 //        setAnswer(Long.toString(Math.round(2025 * turns)));
 
     }
