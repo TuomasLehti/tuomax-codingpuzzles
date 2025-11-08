@@ -29,10 +29,10 @@ extends Test_Solver
     @Test
     public void test_Part2() 
     {
-        final Integer PART = 0;
+        final Integer PART = 1;
         runTest(
             SITE, EVENT, DAY, PART,
-            "part1", 
+            "part2", 
             FishboneOrder_Solver_Part2.class
         );    }
 
