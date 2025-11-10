@@ -14,4 +14,13 @@ public class IntegerList
         return ints;
     }
 
+    public static List<Integer> fromStringList(List<String> input)
+    {
+        List<Integer> ints = new ArrayList<>();
+        for (String line : input)
+            ints.add(Integer.valueOf(line));
+        return ints;
+
+    }
+
 }
