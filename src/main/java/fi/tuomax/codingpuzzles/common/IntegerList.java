@@ -20,7 +20,22 @@ public class IntegerList
         for (String line : input)
             ints.add(Integer.valueOf(line));
         return ints;
+    }
 
+    public static String toString(List<Integer> ints, String separator)
+    {
+        List<String> strs = new ArrayList<>();
+        for (Integer i : ints) 
+            strs.add(i.toString());
+        return String.join(separator, strs);
+    }
+
+    public static Integer sum(List<Integer> ints)
+    {
+        Integer sum = 0;
+        for (Integer i : ints) 
+            sum += i;
+        return sum;
     }
 
 }
