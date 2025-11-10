@@ -57,6 +57,7 @@ public class SetupEcYear
         createSolver(2);
         createSolver(3);
         createTestDir();
+        createTests();
         printMetadata();
 
         scanner.close();
