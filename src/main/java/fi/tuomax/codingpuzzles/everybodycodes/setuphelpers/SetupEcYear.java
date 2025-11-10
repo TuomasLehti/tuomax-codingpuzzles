@@ -232,5 +232,80 @@ public class SetupEcYear
             String.format("quest%d", day)
         ).toString();
     }
+
+    private static void createTests()
+    {
+        Path solverSrc = Path.of(
+            getTestDir(),
+            String.format("Test_%s_Solver.java", namePascalCase)
+        );
+        String[] lines = new String[]{
+            "package fi.tuomax.codingpuzzles.everybodycodes.events.year2025.quest5;",
+            "",
+            "import org.junit.jupiter.api.Test;",
+            "",
+            "import fi.tuomax.codingpuzzles.Test_Solver;",
+            "import " + clazzPath + "." + namePascalCase + "_Solver_Part1",
+            "import " + clazzPath + "." + namePascalCase + "_Solver_Part2",
+            "import " + clazzPath + "." + namePascalCase + "_Solver_Part3",
+            "import fi.tuomax.codingpuzzles.metadata.Site;",
+            "",
+            "public class Test_FishboneOrder_Solver ",
+            "extends Test_Solver",
+            "{",
+            "",
+            "    private final String SITE = Site.ID_EC;",
+            "",
+            "    private final Integer EVENT = " + year + ";",
+            "",
+            "    private final Integer DAY = " + day + ";",
+            "",
+            "    @Test",
+            "    public void test_Part1() ",
+            "    {",
+            "        final Integer PART = 0;",
+            "        runTest(",
+            "            SITE, EVENT, DAY, PART,",
+            "            \"part1\", ",
+            "            " + namePascalCase + "_Solver_Part1.class",
+            "        );",
+            "    }",
+            "",
+            "    @Test",
+            "    public void test_Part2() ",
+            "    {",
+            "        final Integer PART = 1;",
+            "        runTest(",
+            "            SITE, EVENT, DAY, PART,",
+            "            \"part2\", ",
+            "            " + namePascalCase + "_Solver_Part2.class",
+            "        );    ",
+            "    }",
+            "",
+            "    @Test",
+            "    public void test_Part3() ",
+            "    {",
+            "        final Integer PART = 2;",
+            "        runTest(",
+            "            SITE, EVENT, DAY, PART,",
+            "            \"part3\", ",
+            "            " + namePascalCase + "_Solver_Part3.class",
+            "        );    ",
+            "    }",
+            "",
+            "}"
+        };
+        FileWriter writer = null;
+        try {
+            writer = new FileWriter(solverSrc.toFile());
+            for (String line : lines) {
+                writer.write(line);
+                writer.write("\n");
+            }
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("Unable to write to " + solverSrc.toString() + ".");
+        } 
+    }
     
 }
