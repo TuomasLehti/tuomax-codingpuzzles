@@ -13,9 +13,35 @@ extends Solver
         int repetitions = jsonMetadata.getInt("repetitions");
         int distance = jsonMetadata.getInt("distance");
 
-        System.out.println("repeating");
-        String s = input.get(0).repeat(repetitions);
-        System.out.println("done");
+        if (input.get(0).length() > distance) {
+            int ans = 0;
+            if (repetitions > 3) {
+                int first = mentors(input.get(0), 1, distance);
+                int second = mentors(input.get(0), 2, distance);
+                int third = mentors(input.get(0), 3, distance);
+                ans = first + (third - second) * (repetitions - 1);
+            } else {
+                ans = mentors(input.get(0), repetitions, distance);
+            }
+            setAnswer(Integer.toString(ans));
+
+        } else {
+
+            /* This is here just to make the examples work lol. */
+
+            int preRepetitions = (repetitions / input.get(0).length()) + 1;
+            int otherRepetitions = repetitions - preRepetitions;
+            int pre = mentors(input.get(0), preRepetitions, distance);
+            int others = mentors(input.get(0), preRepetitions + 1, distance) - pre;
+            int ans = pre + otherRepetitions * others;
+            setAnswer(Integer.toString(ans));
+
+        }
+    }
+
+    private int mentors(String s, int repetitions, int distance)
+    {
+        s = s.repeat(repetitions);
 
         int ans = 0;
 
@@ -36,7 +62,7 @@ extends Solver
             }
 
         }
-        setAnswer(Integer.toString(ans));
+        return ans;
     }
     
 }
