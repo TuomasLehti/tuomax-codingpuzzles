@@ -46,6 +46,11 @@ extends Test_Solver
             "part3", 
             Namegraph_Solver_Part3.class
         );    
+        runTest(
+            SITE, EVENT, DAY, PART,
+            "part3big", 
+            Namegraph_Solver_Part3.class
+        );    
     }
 
 }
