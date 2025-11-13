@@ -50,5 +50,14 @@ public class Chord
             )
         );
     }
+
+    public boolean equals(Object o)
+    {
+        if (o == null) return false;
+        if (o == this) return true;
+        if (!(o instanceof Chord)) return false;
+        Chord other = (Chord) o;
+        return this.start == other.start && this.end == other.end;
+    }
     
 }
