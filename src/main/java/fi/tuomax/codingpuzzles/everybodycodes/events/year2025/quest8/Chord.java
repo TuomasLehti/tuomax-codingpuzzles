@@ -32,5 +32,23 @@ public class Chord
     {
         return this.end == this.start + NUM_OF_NAILS / 2;
     }
+
+    /**
+     * Does this chord intersect with another chord?
+     */
+    public boolean intersects(Chord other)
+    {
+        return !(
+            (
+                other.start >= this.start 
+                && other.start <= this.end 
+                && other.end >= this.start 
+                && other.end <= this.end
+            ) || (
+                (other.start >= this.end || other.start <= this.start)
+                && (other.end >= this.end || other.end <= this.start)
+            )
+        );
+    }
     
 }
