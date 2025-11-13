@@ -12,14 +12,12 @@ extends Solver
     public void solve(List<String> input) 
     {
         List<Integer> seq = IntegerList.fromString(input.get(0), ",");
-        int numOfNails = jsonMetadata.getInt("numOfNails");
-        int oppSep = numOfNails / 2;
+        Chord.NUM_OF_NAILS = jsonMetadata.getInt("numOfNails");
+
         int ans = 0;
-        for (int i = 0; i < seq.size()-1; i++) {
-            int sep = Math.abs(seq.get(i) - seq.get(i+1));
-            if (sep == oppSep)
-                ans ++;
-        }
+        for (int i = 0; i < seq.size()-1; i++) 
+            if (new Chord(seq.get(i), seq.get(i + 1)).isDiameter())
+                ans++;
         setAnswer(Integer.toString(ans));
     }
     
