@@ -14,4 +14,12 @@ public class IntegerList
         return ints;
     }
 
+    public static Long sum(List<Integer> ints)
+    {
+        Long sum = 0L;
+        for (Integer i : ints)
+            sum += i;
+        return sum;
+    }
+
 }
