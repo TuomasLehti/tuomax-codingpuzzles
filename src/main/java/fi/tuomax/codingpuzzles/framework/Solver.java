@@ -24,6 +24,11 @@ public abstract class Solver
         this.answer = answer;
     }
 
+    protected void setAnswer(Number answer)
+    {
+        this.answer = answer.toString();
+    }
+
     public String getAnswer()
     {
         return answer;
