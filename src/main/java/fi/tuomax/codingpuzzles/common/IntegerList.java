@@ -20,9 +20,9 @@ public class IntegerList
      * Removes duplicates from a list of integers. Doesn't guarantee that
      * ordering remains the same.
      */
-    public static List<Integer> removeDuplicates(List<Integer> source)
+    public static List<Integer> removeDuplicates(List<Integer> ints)
     {
-        Set<Integer> unique = new HashSet<>(source);
+        Set<Integer> unique = new HashSet<>(ints);
         return new ArrayList<Integer>(unique);
     }
 
