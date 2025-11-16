@@ -21,7 +21,7 @@ extends Test_Solver
     @Test
     public void test_IsEngraved()
     {
-        FromComplexToClarity_Solver_Part2 solver = new FromComplexToClarity_Solver_Part2();
+        FromComplexToClarity_Solver_Part2_Part3 solver = new FromComplexToClarity_Solver_Part2_Part3();
         
         assertTrue(solver.isEngraved(new Complex(35630,-64880)));
         assertTrue(solver.isEngraved(new Complex(35630,-64780)));
@@ -39,13 +39,13 @@ extends Test_Solver
     @Test
     public void test_Part2() 
     {
-        runTest(Site.ID_EC, 2025, 1, 1, "part2", FromComplexToClarity_Solver_Part2.class);
+        runTest(Site.ID_EC, 2025, 1, 1, "part2", FromComplexToClarity_Solver_Part2_Part3.class);
     }
 
     @Test
     public void test_Part3() 
     {
-        runTest(Site.ID_EC, 2025, 1, 2, "part3", FromComplexToClarity_Solver_Part3.class);
+        runTest(Site.ID_EC, 2025, 1, 2, "part3", FromComplexToClarity_Solver_Part2_Part3.class);
     }
 
 }

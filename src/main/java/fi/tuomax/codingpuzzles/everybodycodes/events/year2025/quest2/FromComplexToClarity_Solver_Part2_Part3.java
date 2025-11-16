@@ -3,7 +3,7 @@ package fi.tuomax.codingpuzzles.everybodycodes.events.year2025.quest2;
 import fi.tuomax.codingpuzzles.framework.Solver;
 import java.util.List;
 
-public class FromComplexToClarity_Solver_Part2
+public class FromComplexToClarity_Solver_Part2_Part3
 extends Solver
 {
 
@@ -13,11 +13,12 @@ extends Solver
         Complex topLeft = Complex.fromString(input.get(0).split("=")[1]);
         Complex bottomRight = topLeft.add(new Complex(1000, 1000));
 
+        int granularity = jsonMetadata.getInt("granularity");
+
         int ans = 0;
-        for (long y = topLeft.y(); y <= bottomRight.y(); y += 10) {
-            for (long x = topLeft.x(); x <= bottomRight.x(); x += 10) {
+        for (long y = topLeft.y(); y <= bottomRight.y(); y += granularity) {
+            for (long x = topLeft.x(); x <= bottomRight.x(); x += granularity) {
                 Complex point = new Complex(x, y);
-//                System.out.println(point.toString());
                 if (isEngraved(point))
                     ans++;
             }
@@ -27,7 +28,7 @@ extends Solver
 
     public boolean isEngraved(Complex a) {
         Complex result = new Complex(0, 0);
-        Complex divisor = new Complex(100000, 100000); // [100000,100000]
+        Complex divisor = new Complex(100000, 100000);
         for (int i = 0; i < 100; i++) {
             result = result.multiply(result);
             result = result.divide(divisor);
