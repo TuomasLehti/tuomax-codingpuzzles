@@ -29,5 +29,12 @@ public class Test_IntegerList
         List<Integer> uniqueInts = IntegerList.removeDuplicates(ints);
         assertEquals(4, uniqueInts.size());
     }
+
+    @Test
+    public void test_Sum()
+    {
+        List<Integer> ints = IntegerList.fromString("1,2,3,2,3,4", ",");
+        assertEquals(15, (long) IntegerList.sum(ints));
+    }
     
 }
