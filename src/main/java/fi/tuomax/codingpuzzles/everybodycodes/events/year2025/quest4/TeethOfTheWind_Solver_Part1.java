@@ -1,8 +1,8 @@
 package fi.tuomax.codingpuzzles.everybodycodes.events.year2025.quest4;
 
+import fi.tuomax.codingpuzzles.common.IntegerList;
 import fi.tuomax.codingpuzzles.framework.Solver;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class TeethOfTheWind_Solver_Part1
@@ -12,10 +12,7 @@ extends Solver
     @Override
     public void solve(List<String> input) 
     {
-        List<Integer> gears = new ArrayList<>();
-        for (String line : input) {
-            gears.add(Integer.valueOf(line));
-        }
+        List<Integer> gears = IntegerList.fromStringCollection(input);
 
         /*
          * Only the first and last gears matter.
@@ -84,7 +81,7 @@ extends Solver
             (double) gears.get(0) 
             / (double) gears.get(gears.size() - 1);
         Double outputRotations = 2025 * totalRatio;
-        setAnswer(Long.toString(Math.round(Math.floor(outputRotations))));
+        setAnswer(Math.round(Math.floor(outputRotations)));
     }
     
 }
