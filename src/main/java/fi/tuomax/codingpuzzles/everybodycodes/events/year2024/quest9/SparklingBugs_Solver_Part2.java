@@ -14,7 +14,7 @@ extends Solver
     @Override
     public void solve(List<String> input) 
     {
-        List<Integer> balls = IntegerList.fromStringList(input);
+        List<Integer> balls = IntegerList.fromStringCollection(input);
 
         int totalBeetles = 0;
         for (Integer ball : balls) {

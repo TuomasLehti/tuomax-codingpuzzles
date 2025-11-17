@@ -11,7 +11,7 @@ extends Solver
     @Override
     public void solve(List<String> input) 
     {
-        List<Integer> balls = IntegerList.fromStringList(input);
+        List<Integer> balls = IntegerList.fromStringCollection(input);
 
         int[] dots = new int[]{10, 5, 3, 1};
 

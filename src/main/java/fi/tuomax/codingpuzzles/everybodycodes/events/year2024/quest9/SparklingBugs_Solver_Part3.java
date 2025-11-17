@@ -12,7 +12,7 @@ extends SparklingBugs_Solver_Part2
     @Override
     public void solve(List<String> input) 
     {
-        List<Integer> balls = IntegerList.fromStringList(input);
+        List<Integer> balls = IntegerList.fromStringCollection(input);
 
         long totalBeetles = 0;
         for (Integer brightness : balls) {
