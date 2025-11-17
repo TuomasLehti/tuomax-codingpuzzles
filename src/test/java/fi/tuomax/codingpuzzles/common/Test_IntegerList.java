@@ -2,6 +2,7 @@ package fi.tuomax.codingpuzzles.common;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -20,6 +21,21 @@ public class Test_IntegerList
         assertEquals(4, (int) ints.get(3));
         assertEquals(-5, (int) ints.get(4));
         assertEquals(-6, (int) ints.get(5));
+    }
+
+    @Test
+    public void test_fromStringCollection()
+    {
+        List<String> strs = Arrays.asList(new String[]{"0", "1", "1", "2", "3", "5", "8"});
+        List<Integer> ints = IntegerList.fromStringCollection(strs);
+        assertEquals(7, ints.size());
+        assertEquals(0, (int) ints.get(0));
+        assertEquals(1, (int) ints.get(1));
+        assertEquals(1, (int) ints.get(2));
+        assertEquals(2, (int) ints.get(3));
+        assertEquals(3, (int) ints.get(4));
+        assertEquals(5, (int) ints.get(5));
+        assertEquals(8, (int) ints.get(6));
     }
 
     @Test

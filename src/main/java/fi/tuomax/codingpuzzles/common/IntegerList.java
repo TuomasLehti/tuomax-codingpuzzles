@@ -1,6 +1,7 @@
 package fi.tuomax.codingpuzzles.common;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -13,6 +14,14 @@ public class IntegerList
         List<Integer> ints = new ArrayList<>();
         for (String part : input.split(separator))
             ints.add(Integer.valueOf(part));
+        return ints;
+    }
+
+    public static List<Integer> fromStringCollection(Collection<String> strs)
+    {
+        List<Integer> ints = new ArrayList<>();
+        for (String str : strs)
+            ints.add(Integer.valueOf(str));
         return ints;
     }
 
