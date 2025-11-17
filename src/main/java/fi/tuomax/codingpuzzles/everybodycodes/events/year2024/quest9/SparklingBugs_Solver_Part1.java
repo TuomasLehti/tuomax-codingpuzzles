@@ -18,18 +18,12 @@ extends Solver
         int totalBeetles = 0;
         for (Integer ball : balls) {
             int ballBeetles = 0;
-            
-            ballBeetles += ball / 10;
-            ball = ball % 10;
-
-            ballBeetles += ball / 5;
-            ball = ball % 5;
-
-            ballBeetles += ball / 3;
-            ball = ball % 3;
-
+            for (int dotIdx = 0; dotIdx < dots.length - 1; dotIdx++) {
+                int dot = dots[dotIdx];
+                ballBeetles += ball / dot;
+                ball = ball % dot;
+            }
             ballBeetles += ball;
-
             totalBeetles += ballBeetles;
         }
         setAnswer(Integer.toString(totalBeetles));

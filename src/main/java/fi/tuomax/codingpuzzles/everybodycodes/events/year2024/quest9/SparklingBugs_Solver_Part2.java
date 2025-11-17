@@ -3,14 +3,13 @@ package fi.tuomax.codingpuzzles.everybodycodes.events.year2024.quest9;
 import fi.tuomax.codingpuzzles.common.IntegerList;
 import fi.tuomax.codingpuzzles.framework.Solver;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class SparklingBugs_Solver_Part2
 extends Solver
 {
 
-    int[] dots = new int[]{30, 25, 24, 20, 16, 15, 10, 5, 3, 1};
+    private int[] dots = new int[]{30, 25, 24, 20, 16, 15, 10, 5, 3, 1};
 
     @Override
     public void solve(List<String> input) 
@@ -19,45 +18,63 @@ extends Solver
 
         int totalBeetles = 0;
         for (Integer ball : balls) {
-//            System.out.print(ball + ":");
-            taken = new ArrayList<>();
-            minBeetles = Integer.MAX_VALUE;
-            take2(ball, 0, 0);
-//            System.out.println(minBeetles);
-            totalBeetles += minBeetles;
+            minNumOfTakenBeetles = Integer.MAX_VALUE;
+            calculateMinNumOfBeetles(ball, dots, 0, 0);
+            totalBeetles += minNumOfTakenBeetles;
         }
         setAnswer(Integer.toString(totalBeetles));
     }
     
-    List<Integer> taken = new ArrayList<>();
+    protected Integer minNumOfTakenBeetles = Integer.MAX_VALUE;
 
-    List<Integer> minTaken = null;
-
-    Integer minBeetles = Integer.MAX_VALUE;
-
-    private void take2(int ball, int dotIdx, int taken)
-    {
-        if (taken >= minBeetles) {
-//            System.out.println("longer");
+    /**
+     * A recursive function to find the lowest amount of beetles to create
+     * a ball of given brightness.
+     * @param targetBrightness
+     *      Goes down as the recursion goes deeper.
+     * @param dotIdx
+     * @param numOfTakenBeetles
+     */
+    protected void calculateMinNumOfBeetles(
+        int targetBrightness, 
+        int[] dots,
+        int dotIdx, 
+        int numOfTakenBeetles
+    ) {
+        /* This branch can be pruned if we have already taken more beetles
+         * than the minimum. */
+        if (numOfTakenBeetles >= minNumOfTakenBeetles) {
             return;
         }
+        /* Base case is that we've taken a certain amount of 1-beetles. If
+         * the amount of beetles accumulated over the recursion reaches the 
+         * target brightness, we compare if it is lower than the minimum. */
         if (dotIdx >= dots.length) {
-            if (ball == 0) {
-//                System.out.println("tot:" + taken + "\n");
-                minBeetles = Math.min(minBeetles, taken);
+            if (targetBrightness == 0) {
+                minNumOfTakenBeetles = Math.min(minNumOfTakenBeetles, numOfTakenBeetles);
             }
             return;
         }
-        int m = ball / dots[dotIdx];
-        if ((taken + m) > minBeetles) {
-//            System.out.println("prelinger");
+        /* maxDotAmount is the maximum number of beetles of the current (largest
+         * remaining) dot value we could use. This gives the most brightness per
+         * beetle, so it’s an optimistic lower bound on how many beetles we still
+         * need from here.
+         *
+         * If even this best-case total (numOfTakenBeetles + maxDotAmount) is not
+         * better than the current minimum, then any real solution, which can only
+         * use smaller, less efficient dots, cannot improve the result. Prune. */        
+        int maxDotAmount = targetBrightness / dots[dotIdx];
+        if ((numOfTakenBeetles + maxDotAmount) > minNumOfTakenBeetles) {
             return;
         }
-        for (int i = m; i >= 0; i--) {
-//            System.out.println(dots[dotIdx] + ":" + i);
-            ball -= i * dots[dotIdx];
-            take2(ball, dotIdx + 1, taken + i);
-            ball += i * dots[dotIdx];
+        /* Recurse to branches where we take max, max-1, max-2, ..., max-n 
+         * beetles with this amount of dots. */
+        for (int i = maxDotAmount; i >= 0; i--) {
+            targetBrightness -= i * dots[dotIdx];
+            calculateMinNumOfBeetles(
+                targetBrightness, dots, dotIdx + 1, numOfTakenBeetles + i
+            );
+            targetBrightness += i * dots[dotIdx];
         }
     }
 
