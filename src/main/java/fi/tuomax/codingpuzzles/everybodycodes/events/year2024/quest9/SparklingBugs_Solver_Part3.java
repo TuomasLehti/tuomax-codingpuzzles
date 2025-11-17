@@ -26,14 +26,15 @@ extends Solver
         }
         setAnswer(Long.toString(totalBeetles));
     }
-
+//146499
     private long brightness(int ball)
     {
         long minBrightness = Integer.MAX_VALUE;
         for (int pivot = -52; pivot <= 52; pivot++) {
             int lower = ball / 2 + pivot;
             int upper = ball - lower;
-            if ((upper - lower) > 100) continue;
+            System.out.print(lower + "-" + upper + " " + Math.abs(upper - lower) + " : ");
+            if (Math.abs(upper - lower) > 100) continue;
             taken = new ArrayList<>();
             minBeetles = Integer.MAX_VALUE;
             take2(lower, 0, 0);
@@ -44,7 +45,6 @@ extends Solver
             int upperBrightness = minBeetles;
             minBrightness = Math.min(minBrightness, lowerBrightness + upperBrightness);
             System.out.println(
-                lower + "-" + upper + " " + 
                 lowerBrightness + " " + upperBrightness + " " + minBrightness);
         }
         return minBrightness;
